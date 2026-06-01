@@ -1,61 +1,108 @@
 <h1> Search for Pokemon! </h1>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pokémon Search</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokédex Search</title>
 
-        input {
-            padding: 10px;
-            width: 250px;
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    text-align: center;
+    padding: 50px 20px;
+}
 
-        button {
-            padding: 10px 15px;
-            cursor: pointer;
-        }
+.search-container {
+    max-width: 700px;
+    margin: auto;
+}
 
-        #result {
-            margin-top: 20px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
+#searchBox {
+    width: 70%;
+    padding: 12px;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #ff4444;
+    color: white;
+}
+
+button:hover {
+    background: #dd3333;
+}
+
+#result {
+    margin-top: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#result img {
+    max-width: 300px;
+    width: 100%;
+    border-radius: 10px;
+}
+</style>
 </head>
 <body>
 
-    <input type="text" id="searchBox" placeholder="Search...">
+<div class="search-container">
+    <h1>Pokédox Search</h1>
+
+    <input
+        type="text"
+        id="searchBox"
+        placeholder="Search for a Pokémon..."
+        onkeypress="if(event.key==='Enter') searchThing();"
+    >
+
     <button onclick="searchThing()">Search</button>
 
     <div id="result"></div>
+</div>
 
-    <script>
-        function searchThing() {
-            const search = document.getElementById("searchBox").value.toLowerCase();
-            const result = document.getElementById("result");
+<script>
+function searchThing() {
+    const search = document.getElementById("searchBox").value.trim().toLowerCase();
+    const result = document.getElementById("result");
 
-            if (search === "charizard") {
-                result.innerHTML = `
-                    <h2>Charizard</h2>
-                    <p>
-                        Charizard is a Fire/Flying-type Pokémon introduced in Generation I.
-                        It evolves from Charmeleon and is the final evolution of Charmander.
-                        Charizard is known for its powerful fire attacks and dragon-like appearance.
-                        Pokédex #0006.
-                    </p>
-                `;
-            } else {
-                result.innerHTML = "<p>No results found.</p>";
-            }
-        }
-    </script>
+    if (search === "charizard") {
+        result.innerHTML = `
+            <h2>🔥 Charizard</h2>
+
+            <img src="charizardimgcard.jpg" alt="Charizard">
+
+            <p><strong>Pokédex #0006</strong></p>
+
+            <p>
+                Charizard is a Fire type Pokémon introduced in Generation I.
+                It evolves from Charmeleon and is the final evolution of Charmander.
+                Known for its powerful flames and dragon-like appearance,
+                Charizard is one of the most popular Pokémon of all time.
+            </p>
+        `;
+    } else {
+        result.innerHTML = `
+            <h2>No Results Found</h2>
+            <p>Try searching for "Charizard".</p>
+        `;
+    }
+}
+</script>
 
 </body>
 </html>
+
